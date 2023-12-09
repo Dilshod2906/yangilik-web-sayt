@@ -1,0 +1,23 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content_bottom"></div>
+  <div class="games_fashion_area"></div>
+    <div class="games_category">
+      <div class="single_category">
+        <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">MAHALLIY</a> </h2>
+        <ul class="fashion_catgnav wow fadeInDown">
+          {% for i in mahalliy %}
+          <li>
+            <div class="catgimg2_container"> <a href="{% url 'single' i.pk %}"><img alt="" src="{{ i.image.url }}"></a> </div>
+            <h2 class="catg_titile"><a href="{% url 'single' i.pk %}">{{ i.title | truncatewords:13 }}</a></h2><br>
+            <p>{{ i.body | truncatewords:35 }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

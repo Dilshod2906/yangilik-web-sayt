@@ -1,0 +1,120 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+
+{% block content %}
+  <section id="mainContent">
+    <div class="content_bottom">
+      <div class="col-lg-8 col-md-8">
+        <div class="content_bottom_left">
+          <div class="single_page_area">
+            <ol class="breadcrumb">
+              <li><a href="#">Bosh sahifa</a></li>
+              <li><a href="#">{{ news.category }}</a></li>
+              <li class="active"><a href="#">{{ news.title|truncatewords:3 }}</a></li>
+            </ol>
+            <h2 class="post_titile">{{ news.title }}</h2>
+            <div class="single_page_content">
+              <div class="post_commentbox"><span><i class="fa fa-calendar"></i>{{ news.publish_time }}</span> <a href="#"><i class="fa fa-tags"></i>{{ news.category }}</a><span><i class="fa fa-eye"></i>{{ news.view_count }}</span> </div>
+              <img class="img-center" src="{{ news.image.url }}" alt="">
+              {{ news.body | linebreaks }} 
+              <a href="{% url 'news_create' %}"><button class="btn btn-primary">Yangilik qo'shish</button></a>
+              <a href="{% url 'news_update' news.pk %}"><button class="btn btn-success">Yangilik tahrirlash</button></a>
+              <a href="{% url 'news_delate' news.pk %}"><button class="btn btn-danger">Yangilik o'chirish</button></a>
+            </div>
+          </div>
+        </div>
+        <div class="post_pagination">
+          <div class="prev"> <a class="angle_left" href="#"><i class="fa fa-angle-double-left"></i></a>
+            <div class="pagincontent"> <span>Previous Post</span> <a href="#">Aliquam quam orci in molestie a tempor nec</a> </div>
+          </div>
+          <div class="next">
+            <div class="pagincontent"> <span>Next Post</span> <a href="#">Aliquam quam orci in molestie a tempor nec</a> </div>
+            <a class="angle_right" href="#"><i class="fa fa-angle-double-right"></i></a> </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="content_bottom_right">
+          <div class="single_bottom_rightbar">
+            <h2>Eng so'nggi yangiliklar</h2>
+            {% for i in yangilik3 %}
+            <ul class="small_catg popular_catg wow fadeInDown">              
+              <li>
+                <div class="media wow fadeInDown"> <a href="{% url 'single' i.pk %}" class="media-left"><img alt="" src="{{ i.image.url }}"> </a>
+                  <div class="media-body">
+                    <a href="{% url 'single' i.pk %}"><h4 class="media-heading">{{ i.title | truncatewords:10 }}</h4></a>
+                    <p>{{ i.body| truncatewords:20 }}</p>
+                  </div>
+                </div>
+              </li>              
+            </ul>
+            {% endfor %}
+          </div>
+          <div class="single_bottom_rightbar">
+            <ul role="tablist" class="nav nav-tabs custom-tabs">
+                </ul>
+              </div>
+              <div id="p2" class="sidebar_rate" data-pjax-container data-prax-timeout="10000">
+                <h2>Valyuta kurslari</h2>
+                <div class="row-info">
+                  <p>1 USD = {{ usd_uzs }} so'm</p>
+                  <p>1 EUR = {{ eur_uzs }} so'm</p>
+                  <p>1 RUB = {{ rub_uzs }} so'm</p>
+                </div>
+              </div>
+              <div id="recentComent" class="tab-pane fade" role="tabpanel">
+                <ul class="small_catg popular_catg">
+                  <li>
+                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{% static '../images/112x112.jpg' %}" alt=""></a>
+                      <div class="media-body">
+                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li> 
+                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{% static '../images/112x112.jpg' %}" alt=""></a>
+                      <div class="media-body">
+                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{% static '../images/112x112.jpg' %}" alt=""></a>
+                      <div class="media-body">
+                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="single_bottom_rightbar">
+            <h2>Blog Archive</h2>
+            <div class="blog_archive wow fadeInDown">
+              <form action="#">
+                <select>
+                  <option value="">Blog Archive</option>
+                  <option value="">October(20)</option>
+                </select>
+              </form>
+            </div>
+          </div> -->
+          <!-- <div class="single_bottom_rightbar wow fadeInDown">
+            <h2>Popular Lnks</h2>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Blog Home</a></li>
+              <li><a href="#">Error Page</a></li>
+              <li><a href="#">Social link</a></li>
+              <li><a href="#">Login</a></li>
+            </ul>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

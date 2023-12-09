@@ -1,0 +1,12 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<h2>Websitega kirish</h2>
+<p>Ushbu saytga kirish uchun formani toldiring</p>
+<form method="POST">{% csrf_token %}
+	{{form.as_p}}
+	<a href="{% url 'password_reset' %}" style="color: red;"><h5>Parolni unitdingizmi?</h5></a>
+	<button type="submit">Kirish</button>
+	
+</form>
+{% endblock content %}

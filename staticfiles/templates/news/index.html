@@ -1,0 +1,180 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block content %}
+  <section id="mainContent">
+    <div class="content_top">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm6">
+          <div class="latest_slider">
+            <div class="slick_slider">
+              {% for i in yangilik %}
+              <div class="single_iteam"><img src="{{ i.image.url }}" alt="#">
+                <h2><a class="slider_tittle" href="{% url 'single' i.pk %}">{{ i.title | truncatewords:5 }}</a></h2>
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm6">
+          <div class="content_top_right">
+            <ul class="featured_nav wow fadeInDown">
+              {% for i in yangilik3 %}
+              <li><img src="{{ i.image.url }}" alt="">
+                <div class="title_caption"><a href="{% url 'single' i.pk %}">{{ i.title | truncatewords:5 }}</a></div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content_middle">
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="content_middle_leftbar">
+          <div class="single_category wow fadeInDown">
+            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a href="#" class="title_text">O'zbekiston</a> </h2>
+            <ul class="catg1_nav">
+              {% for i in uz %}
+                <div class="catgimg_container"> <a href="{% url 'single' i.pk %}" class="catg1_img"><img alt="" src="{{ i.image.url }}"></a></div>
+                <h3 class="post_titile"><a href="{% url 'single' i.pk %}">{{ i.title | truncatewords:5 }}</a></h3>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="content_middle_middle">
+          <div class="slick_slider2">
+            {% for i in sport %}
+            <div class="single_featured_slide"> <a href="{% url 'single' i.pk %}"><img src="{{ i.image.url }}" alt=""></a>
+              <h2><a href="{% url 'single' i.pk %}">{{ i.title | truncatewords:5 }}</a></h2>
+              <p>{{ i.body | truncatewords:5 }}</p>
+              <h1></h1><p>ENG SO'NGGI SPORT YANGILIKLARI</p></h1>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="content_middle_rightbar">
+          <div class="single_category wow fadeInDown">
+            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a href="#" class="title_text">JAHON</a> </h2>
+            <ul class="catg1_nav">
+              {% for i in jahon %}
+              <li>
+                <div class="catgimg_container"> <a href="{% url 'single' i.pk %}" class="catg1_img"><img alt="" src="{{ i.image.url }}"></a></div>
+                <h3 class="post_titile"><a href="{% url 'single' i.pk %}">{{ i.title | truncatewords:5 }}</a></h3>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content_bottom">
+      <div class="col-lg-8 col-md-8">
+        <div class="content_bottom_left">
+          <div class="single_category wow fadeInDown">
+            <div class="business_category_left wow fadeInDown">
+            </div>
+          </div>
+          <div class="games_fashion_area">
+            <div class="games_category">
+              <div class="single_category">
+                <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">JAMIYAT</a> </h2>
+                <ul class="fashion_catgnav wow fadeInDown">
+                  {% for i in jamiyat %}
+                  <li>
+                    <div class="catgimg2_container"> <a href="{% url 'single' i.pk %}"><img alt="" src="{{ i.image.url }}"></a> </div>
+                    <h2 class="catg_titile"><a href="{% url 'single' i.pk %}">{{ i.title | truncatewords:10 }}</a></h2>
+                    <p>{{ i.body | truncatewords:35 }}</p>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="fashion_category">
+              <div class="single_category">
+                <div class="single_category wow fadeInDown">
+                  <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">FAN -- TEXNIKA</a> </h2>
+                  <ul class="fashion_catgnav wow fadeInDown">
+                    {% for i in fan %}
+                    <li>
+                      <div class="catgimg2_container"> <a href="{% url 'single' i.pk %}"><img alt="" src="{{ i.image.url }}"></a> </div>
+                      <h2 class="catg_titile"><a href="{% url 'single' i.pk %}">{{ i.title | truncatewords:10 }}</a></h2>
+                      <p>{{ i.body | truncatewords:35 }}</p>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="technology_catrarea">
+            <div class="single_category">
+              <div class="business_category_left">
+                <ul class="fashion_catgnav wow fadeInDown">
+                </ul> 
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="content_bottom_right">
+          <div class="single_bottom_rightbar">
+            <h2>IQTISODIYOT</h2>
+            
+            <ul class="small_catg popular_catg wow fadeInDown">
+              {% for i in iqtisodiyot %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="#" class="media-left"><img alt="{% url 'single' i.pk %}" src="{{ i.image.url }}"></a>
+                  <div class="media-body">
+                    <h4 class="media-heading"><a href="{% url 'single' i.pk %}">{{ i.title | truncatewords:10 }}</a></h4>
+                    <p>{{ i.body | truncatewords:15 }}</p>
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+            
+          </div>
+              <div id="recentComent" class="tab-pane fade" role="tabpanel">
+                <ul class="small_catg popular_catg">
+                  <li>
+                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{% static 'images/112x112.jpg' %}" alt=""></a>
+                      <div class="media-body">
+                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{% static 'images/112x112.jpg' %}" alt=""></a>
+                      <div class="media-body">
+                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{% static 'images/112x112.jpg' %}" alt=""></a>
+                      <div class="media-body">
+                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="single_bottom_rightbar wow fadeInDown">
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock content %}

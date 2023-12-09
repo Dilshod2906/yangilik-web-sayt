@@ -1,0 +1,16 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %} Foydalanuvchining profili {% endblock title %}
+
+{% block content %}
+
+<h3>Xush kelibsiz, {{ user.username }}</h3>
+<h2>Siz haqingizdagi ma'lumotlar</h2><br><br>
+<label>Foydalanuvchi nomi:</label> <input value="{{ user.username }}" readonly placeholder="kiritilmagan"><br><br>
+<label>Elektron pochta:</label> <input value="{{ user.email }}" readonly placeholder="kiritilmagan"><br><br>
+<label>Ism:</label> <input value="{{ user.first_name }}" readonly placeholder="kiritilmagan"><br><br>
+<label>Familya:</label> <input value="{{ last_name }}" readonly placeholder="kiritilmagan"><br><br>
+<a href="{% url 'password_reset' %}" style="color: red;"><h5>Parolni almashtirish</h5></a>
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="news-container">
+        {% if searched %}
+            <h1 style="text-align: center;"> Siz qidirgan ma'lumot {{ searched }}</h1>
+            <ul style="list-style: none; padding: 0; text-align: center;" >
+                <li style="border-bottom: 1p solid #ccc; padding: 10px 0; ">
+                    {% for xabar in news %}
+                    <div style="width: 100; position: relative;">
+                        <div style="display: flexbox; ">
+                            <img height="100" width="100" src="{{ xabar.image.url }}" alt="xabar"><br>
+                            <a href="{% url 'single' xabar.pk %}" style="position: relative; width: 100%; overflow: hidden; display: block; margin-bottom: 12px;" >{{ xabar }} </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </li>
+            </ul>
+        {% else %}
+            <h1  style="text-align: center;">Hech narsa topilmadi</h1>
+        {% endif %}
+    </div>
+{% endblock content %}

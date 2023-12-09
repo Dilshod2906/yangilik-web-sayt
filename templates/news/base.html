@@ -1,0 +1,143 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Yangiliklar vebsayti</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/slick.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/theme.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+</head>
+<body>
+<div id="preloader">
+  <div id="status">&nbsp;</div>
+</div>
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+<div class="container">
+  <header id="header">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="header_top">
+          <div class="header_top_left">
+            <ul class="top_nav">
+              <li><a href="{% url 'home' %}">Bosh Sahifa</a></li>
+              <li><a href="{% url 'aloqa' %}">Aloqa</a></li>
+              {% if request.user.is_authenticated %}
+              <li><a href="{% url 'view_profile' %}">Profil</a></li>
+              <li><a href="{% url 'logout' %}">Saytdan chiqish</a></li>
+              {% else %}
+              <li><a href="{% url 'login' %}">Saytga kirish</a></li>
+              <li><a href="{% url 'register' %}">Ro'yxatdan O'tish</a></li>
+              {% endif %}
+
+            </ul>
+            <ul class="top_nav">
+              <li>
+                  </select>
+                </form>
+              </li> 
+            </ul>
+          </div>
+          <span>
+          </span>
+          <div class="header_top_right">
+            <form action="{% url 'search_venues' %}" class="d-flex" method=POST style="margin-top: 2%;">
+              {% csrf_token %}
+              <input type="text" placeholder="Qidirish..." style="border-radius: -25px; border: 1px solid #FFC300; height: -25px;" name="searched" >
+              <button type="submit" class="btn btn-warning" style="height: 26px; margin-bottom: 0.1%; padding-bottom: 2px;">Yuborish</button>
+            </form>
+          </div>
+        </div>
+        <div class="header_bottom">
+          <div class="header_bottom_left"><a class="logo" href="{% url 'home' %}">yangilik<strong>.uz</strong> <span>Eng so'nggi yangiliklar</span></a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="navarea">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav custom_nav">
+            <li class=""><a href="{% url 'home' %}">Bosh Sahifa</a></li>
+            <li class="dropdown"> <a href="#" class="" data-toggle="dropdown" role="button" aria-expanded="false">KATEGORIYA</a>
+              <ul class="dropdown-menu" role="menu">
+                {% for i in category %}
+                <li><a href="{% url 'mahalliy' %}">{{ i.name }}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+            <li><a href="{% url 'aloqa' %}">Aloqa</a></li>
+            <li><a href="{% url '404' %}">404 Sahifa</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+    {% block content %}
+            
+    {% endblock content %}
+</div>
+<footer id="footer">
+  <div class="footer_top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="single_footer_top wow fadeInLeft">
+            <h2>Sayt haqida</h2>
+            <p>Yangiliklar.uz websitemizda-eng so'nggi yangiliklar bilan tanishib borasiz.<br>Saytimizdan uzoqlashmang.<br>Elektron manzil:  <a href="mailto">siddqiovd85@gamil.com</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="single_footer_top wow fadeInDown">
+            <h2>Kategoriyalar</h2>
+            <ul class="labels_nav">
+              {% for i in category %}
+              <li><a href="#">{{ i.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="single_footer_top wow fadeInRight">
+            <h2>Ichtimoyiy tarmoqlar</h2>
+            <div class="share_post"> <a class="facebook" href="#"><i class="fa fa-youtube"></i>Youtube</a> <a class="twitter" href="#"><i class="bi bi-telegram"></i>Telegram</a> <a class="googleplus" href="#"><i class="fa fa-instagram"></i>Instagram</a> <a class="linkedin" href="#"><i class="fa fa-twitter"></i>Twitter</a> <a class="stumbleupon" href="#"><i class="fa fa-facebook"></i>Facebook</a> <a class="pinterest" href="#"><i class="fa fa-pinterest"></i>Pinterest</a> </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <div class="footer_bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="footer_bottom_left">
+            <p>Siddiqov Dilshod &copy; 2023 <a href="{% url 'home' %}">Yangiklar.uz</a></p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="footer_bottom_right">
+            <p>Yangiliklar web-site</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="{% static 'assets/js/jquery.min.js' %}"></script> 
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script> 
+<script src="{% static 'assets/js/wow.min.js' %}"></script> 
+<script src="{% static 'assets/js/slick.min.js' %}"></script> 
+<script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+</html>

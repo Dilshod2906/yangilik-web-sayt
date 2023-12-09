@@ -1,0 +1,15 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2 class="text-center">Yangilik o'chirish</h2><br><br>
+<form action="#" method="post" >{% csrf_token %}
+    {{ form.as_p}}
+    <h4>Siz ushbu "<b>{{ news.title }}</b>" yangiligini o'chirishni xohlaysizmi?</h4>
+    <button type="submit" class="btn btn-success" style="margin-left: 40%;">O'chirish</button>
+    <button type="submit" class="btn btn-danger">Bekor qilish</button>
+</form>
+
+
+{% endblock content %}

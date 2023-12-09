@@ -1,0 +1,22 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registratsiya</title>
+</head>
+<body>
+    <h1>Yangi foydalanuvchilarni royxatdan otkazish</h1>
+    <p>Ro'yxatdan otish uchun quyidagi formani to'diring</p>
+    <form  method="POST">{% csrf_token %}
+        {{ user_form.as_p}}
+        <button type="submit">Ro'yxatdan o'tish</button>
+    </form>
+    
+</body>
+</html>
+{% endblock content %}
